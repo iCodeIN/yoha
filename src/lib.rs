@@ -1,1 +1,2 @@
+mod eval;
 mod parser;
