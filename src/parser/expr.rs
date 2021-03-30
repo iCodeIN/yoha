@@ -1,13 +1,13 @@
 use super::{number::Number, str::Str};
 
 #[derive(Debug, PartialEq)]
-enum Expr {
+pub(crate) enum Expr {
     Number(Number),
     Str(Str),
 }
 
 impl Expr {
-    fn new(s: &str) -> Self {
+    pub(crate) fn new(s: &str) -> Self {
         if s.starts_with('\"') {
             Self::Str(Str::new(s))
         } else {
