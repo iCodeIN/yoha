@@ -5,7 +5,7 @@ struct Number {
 
 impl Number {
     fn new(s: &str) -> Result<Self, &'static str> {
-        Ok(Number {
+        Ok(Self {
             value: s.parse().map_err(|_| "failed to parse number")?,
         })
     }
