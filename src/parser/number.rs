@@ -18,6 +18,6 @@ mod tests {
     #[test]
     fn parse_number() {
         let number = Number::new("92");
-        assert_eq!(Number { value: 92 }, number);
+        assert_eq!(number, Number { value: 92 });
     }
 }
