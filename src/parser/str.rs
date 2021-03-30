@@ -1,16 +1,18 @@
+use core::panic;
+
 #[derive(Debug, PartialEq)]
 struct Str {
     value: String,
 }
 
 impl Str {
-    fn new(s: &str) -> Result<Self, &'static str> {
+    fn new(s: &str) -> Self {
         if s.starts_with('\"') && s.ends_with('\"') {
-            Ok(Self {
+            Self {
                 value: s[1..s.len() - 1].to_string(),
-            })
+            }
         } else {
-            Err("failed to parse string")
+            panic!()
         }
     }
 }
@@ -23,15 +25,10 @@ mod tests {
     fn parse_str() {
         let str = Str::new("\"ninety two\"");
         assert_eq!(
-            str,
-            Ok(Str {
+            Str {
                 value: "ninety two".to_string(),
-            }),
+            },
+            str
         );
-    }
-
-    #[test]
-    fn fail_to_parse_str() {
-        assert_eq!(Str::new("🦀"), Err("failed to parse string"));
     }
 }

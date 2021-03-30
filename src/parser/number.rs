@@ -1,13 +1,13 @@
 #[derive(Debug, PartialEq)]
-struct Number {
-    value: i64,
+pub(crate) struct Number {
+    pub(crate) value: i64,
 }
 
 impl Number {
-    fn new(s: &str) -> Result<Self, &'static str> {
-        Ok(Self {
-            value: s.parse().map_err(|_| "failed to parse number")?,
-        })
+    pub(crate) fn new(s: &str) -> Self {
+        Self {
+            value: s.parse().unwrap(),
+        }
     }
 }
 
@@ -18,11 +18,6 @@ mod tests {
     #[test]
     fn parse_number() {
         let number = Number::new("92");
-        assert_eq!(number, Ok(Number { value: 92 }));
-    }
-
-    #[test]
-    fn fail_to_parse_number() {
-        assert_eq!(Number::new("ninety two"), Err("failed to parse number"));
+        assert_eq!(Number { value: 92 }, number);
     }
 }
