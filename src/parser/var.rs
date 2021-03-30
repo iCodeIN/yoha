@@ -1,10 +1,10 @@
 #[derive(Debug, PartialEq)]
-struct Var {
-    name: String,
+pub(crate) struct Var {
+    pub(crate) name: String,
 }
 
 impl Var {
-    fn new(s: &str) -> Self {
+    pub(crate) fn new(s: &str) -> Self {
         Self {
             name: s.to_string(),
         }
