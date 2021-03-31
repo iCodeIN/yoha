@@ -1,13 +1,13 @@
 use super::expr::Expr;
 
 #[derive(Debug, PartialEq)]
-struct VarDef {
-    name: String,
-    value: Expr,
+pub(crate) struct VarDef {
+    pub(crate) name: String,
+    pub(crate) value: Expr,
 }
 
 impl VarDef {
-    fn new(s: &str) -> Self {
+    pub(crate) fn new(s: &str) -> Self {
         let s = s.strip_prefix("let").unwrap();
         let s = s.trim_start();
         let first_whitespace_index = s.find(|c: char| c.is_whitespace()).unwrap();
